@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="Rocket-Drive">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/build/libs/Rocket-Drive.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
