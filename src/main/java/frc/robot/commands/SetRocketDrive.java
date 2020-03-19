@@ -8,13 +8,27 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
+import frc.robot.subsystems.DriveTrain;
+
+import java.util.function.DoubleSupplier;
 
 public class SetRocketDrive extends CommandBase {
+
+  private DriveTrain driveTrain;
+  private DoubleSupplier left;
+  private DoubleSupplier right;
+  private DoubleSupplier turn;
+
   /**
    * Creates a new SetRocketDrive.
    */
-  public SetRocketDrive() {
+  public SetRocketDrive(DriveTrain drive, DoubleSupplier leftTrigger, DoubleSupplier rightTrigger, DoubleSupplier turn) {
     // Use addRequirements() here to declare subsystem dependencies.
+    this.driveTrain = drive;
+    this.left = leftTrigger;
+    this.right = rightTrigger;
+    this.turn = turn;
+    addRequirements(drive);
   }
 
   // Called when the command is initially scheduled.
@@ -25,6 +39,12 @@ public class SetRocketDrive extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
+    double throttle = left.getAsDouble() > 0 ? -left.getAsDouble() : right.getAsDouble();
+    double turnVal = turn.getAsDouble();
+
+    double leftOut = throttle + turnVal;
+    double rightOut = throttle - turnVal;
+    driveTrain.setMotorPercentOutput(leftOut, rightOut);
   }
 
   // Called once the command ends or is interrupted.

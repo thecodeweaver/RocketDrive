@@ -17,9 +17,7 @@ package frc.robot;
  */
 public final class Constants {
     // USB PORTS
-    public static final int leftJoystick = 0;
-    public static final int rightJoystick = 1;
-    public static final int xBoxController = 2;
+    public static final int xBoxController = 0;
 
     // CAN
     public static final int leftFrontDriveMotor = 20;

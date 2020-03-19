@@ -63,12 +63,6 @@ public class DriveTrain extends SubsystemBase {
     driveMotors[2].set(ControlMode.PercentOutput, rightOut);
   }
 
-  public void setMotorArcadeDrive(double throttle, double turn) {
-    double leftOut = throttle + turn;
-    double rightOut = throttle - turn;
-    setMotorPercentOutput(leftOut, rightOut);
-  }
-
   @Override
   public void periodic() {
     // This method will be called once per scheduler run
